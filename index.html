@@ -15,6 +15,51 @@
     />
 
     <style>
+      .pin-title-wrapper {
+        position: relative;
+        display: inline-block;
+      }
+
+      .unlock-heart {
+        font-size: clamp(2rem, 8vw, 3.5rem);
+        display: block;
+        margin-bottom: 15px;
+        animation: heartFloat 3s ease-in-out infinite;
+        filter: drop-shadow(0 5px 10px rgba(201, 24, 74, 0.3));
+      }
+
+      @keyframes heartFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+
+      /* sparkle effect on heart */
+      .unlock-heart::after {
+        content: "✨";
+        position: absolute;
+        top: -8px;
+        right: -12px;
+        font-size: 1rem;
+        animation: sparkleBlink 2s infinite ease-in-out;
+      }
+
+      @keyframes sparkleBlink {
+        0%,
+        100% {
+          opacity: 0;
+          transform: scale(0.5);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
       /* ===== RESET & BASE ===== */
       * {
         margin: 0;
@@ -495,25 +540,47 @@
       .kiss-button {
         background: linear-gradient(
           135deg,
-          var(--rose-bloom) 0%,
-          var(--deep-rose) 100%
+          #ff6b9d 0%,
+          #ff1744 50%,
+          #c9184a 100%
         );
         color: white;
         border: none;
-        padding: 15px 45px;
-        font-size: clamp(1rem, 4vw, 1.3rem);
+        padding: 18px 50px;
+        font-size: clamp(1.1rem, 4.5vw, 1.4rem);
         border-radius: 50px;
         cursor: pointer;
-        font-weight: 600;
+        font-weight: 700;
         transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-        box-shadow: 0 10px 30px rgba(201, 24, 74, 0.3);
+        box-shadow:
+          0 10px 40px rgba(255, 23, 68, 0.4),
+          0 5px 15px rgba(201, 24, 74, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.3);
         font-family: "Cormorant Garamond", serif;
-        letter-spacing: 1px;
+        letter-spacing: 1.5px;
         position: relative;
         overflow: hidden;
         touch-action: manipulation;
         width: 100%;
-        max-width: 280px;
+        max-width: 300px;
+        text-transform: uppercase;
+        animation: pulseGlow 2s ease-in-out infinite;
+      }
+
+      @keyframes pulseGlow {
+        0%,
+        100% {
+          box-shadow:
+            0 10px 40px rgba(255, 23, 68, 0.4),
+            0 5px 15px rgba(201, 24, 74, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+        50% {
+          box-shadow:
+            0 15px 50px rgba(255, 23, 68, 0.6),
+            0 8px 25px rgba(201, 24, 74, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        }
       }
 
       .kiss-button::before {
@@ -524,16 +591,40 @@
         width: 0;
         height: 0;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.4);
+        background: rgba(255, 255, 255, 0.5);
         transform: translate(-50%, -50%);
         transition:
           width 0.6s,
           height 0.6s;
       }
 
+      .kiss-button::after {
+        content: "💕";
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.5em;
+        animation: heartBeat 1.5s ease-in-out infinite;
+      }
+
+      @keyframes heartBeat {
+        0%,
+        100% {
+          transform: translateY(-50%) scale(1);
+        }
+        50% {
+          transform: translateY(-50%) scale(1.2);
+        }
+      }
+
       .kiss-button:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 40px rgba(255, 107, 157, 0.4);
+        transform: translateY(-8px) scale(1.05);
+        box-shadow:
+          0 20px 60px rgba(255, 23, 68, 0.6),
+          0 10px 30px rgba(201, 24, 74, 0.5),
+          inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        letter-spacing: 2px;
       }
 
       .kiss-button:hover::before {
@@ -962,6 +1053,7 @@
     <div class="container">
       <!-- PIN PAGE -->
       <div class="pin-page" id="pinPage">
+        <div class="unlock-heart">💖</div>
         <h1 class="pin-title">✦ Unlock ✦</h1>
         <p class="pin-subtitle">OUR ANNIVERSARY</p>
 
@@ -1025,7 +1117,7 @@
           </p>
 
           <button class="kiss-button" id="kissButton">
-            <span style="position: relative; z-index: 1">Receive Kiss 💋</span>
+            <span style="position: relative; z-index: 1">Receive Kiss</span>
           </button>
         </div>
 
