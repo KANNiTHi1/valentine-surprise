@@ -1,962 +1,1253 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="th">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Happy Valentine's Day 💖</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Italiana&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Italiana&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
-        /* ===== RESET & BASE ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
+      /* ===== RESET & BASE ===== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+      }
 
-        :root {
-            --rose-bloom: #ff6b9d;
-            --deep-rose: #c9184a;
-            --blush: #ffc2d4;
-            --cream: #fff8f0;
-            --midnight: #2d1b2e;
-            --gold: #f4d58d;
-            --soft-shadow: rgba(201, 24, 74, 0.15);
-        }
+      :root {
+        --rose-bloom: #ff6b9d;
+        --deep-rose: #c9184a;
+        --blush: #ffc2d4;
+        --cream: #fff8f0;
+        --midnight: #2d1b2e;
+        --gold: #f4d58d;
+        --soft-shadow: rgba(201, 24, 74, 0.15);
+      }
 
-        body {
-            font-family: 'Cormorant Garamond', serif;
-            overflow-x: hidden;
-            background: var(--cream);
-            min-height: 100vh;
-            position: relative;
-            color: var(--midnight);
-        }
+      body {
+        font-family: "Cormorant Garamond", serif;
+        overflow-x: hidden;
+        background: var(--cream);
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+        position: relative;
+        color: var(--midnight);
+      }
 
-        /* ===== ANIMATED BACKGROUND ===== */
-        .background-art {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            overflow: hidden;
-            pointer-events: none;
-        }
+      html {
+        height: -webkit-fill-available;
+      }
 
-        .bg-gradient {
-            position: absolute;
-            width: 120%;
-            height: 120%;
-            top: -10%;
-            left: -10%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(255, 182, 193, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(255, 192, 212, 0.25) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(255, 240, 245, 0.4) 0%, transparent 70%);
-            animation: gradientShift 20s ease-in-out infinite;
-        }
+      /* ===== ANIMATED BACKGROUND ===== */
+      .background-art {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        overflow: hidden;
+        pointer-events: none;
+      }
 
-        @keyframes gradientShift {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-5%, 5%) scale(1.1); }
-        }
+      .bg-gradient {
+        position: absolute;
+        width: 120%;
+        height: 120%;
+        top: -10%;
+        left: -10%;
+        background:
+          radial-gradient(
+            circle at 20% 30%,
+            rgba(255, 182, 193, 0.3) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 70%,
+            rgba(255, 192, 212, 0.25) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 50% 50%,
+            rgba(255, 240, 245, 0.4) 0%,
+            transparent 70%
+          );
+        animation: gradientShift 20s ease-in-out infinite;
+      }
 
-        .rose-petals {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
+      @keyframes gradientShift {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
         }
+        50% {
+          transform: translate(-5%, 5%) scale(1.1);
+        }
+      }
 
+      .rose-petals {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+      }
+
+      .petal {
+        position: absolute;
+        width: 15px;
+        height: 20px;
+        background: linear-gradient(
+          135deg,
+          var(--rose-bloom) 0%,
+          var(--blush) 100%
+        );
+        border-radius: 50% 0 50% 0;
+        opacity: 0;
+        animation: petalFall 15s linear infinite;
+        filter: blur(0.5px);
+        will-change: transform, opacity;
+      }
+
+      @media (max-width: 768px) {
         .petal {
-            position: absolute;
-            width: 20px;
-            height: 25px;
-            background: linear-gradient(135deg, var(--rose-bloom) 0%, var(--blush) 100%);
-            border-radius: 50% 0 50% 0;
-            opacity: 0;
-            animation: petalFall 15s linear infinite;
-            filter: blur(0.5px);
+          width: 12px;
+          height: 16px;
         }
+      }
 
-        .petal:nth-child(1) { left: 5%; animation-delay: 0s; }
-        .petal:nth-child(2) { left: 15%; animation-delay: 3s; width: 15px; height: 20px; }
-        .petal:nth-child(3) { left: 25%; animation-delay: 6s; }
-        .petal:nth-child(4) { left: 35%; animation-delay: 1.5s; width: 18px; height: 23px; }
-        .petal:nth-child(5) { left: 45%; animation-delay: 8s; }
-        .petal:nth-child(6) { left: 55%; animation-delay: 4s; width: 16px; height: 21px; }
-        .petal:nth-child(7) { left: 65%; animation-delay: 10s; }
-        .petal:nth-child(8) { left: 75%; animation-delay: 5s; width: 19px; height: 24px; }
-        .petal:nth-child(9) { left: 85%; animation-delay: 7s; }
-        .petal:nth-child(10) { left: 95%; animation-delay: 2s; width: 17px; height: 22px; }
+      .petal:nth-child(1) {
+        left: 5%;
+        animation-delay: 0s;
+      }
+      .petal:nth-child(2) {
+        left: 15%;
+        animation-delay: 3s;
+        width: 15px;
+        height: 20px;
+      }
+      .petal:nth-child(3) {
+        left: 25%;
+        animation-delay: 6s;
+      }
+      .petal:nth-child(4) {
+        left: 35%;
+        animation-delay: 1.5s;
+        width: 18px;
+        height: 23px;
+      }
+      .petal:nth-child(5) {
+        left: 45%;
+        animation-delay: 8s;
+      }
+      .petal:nth-child(6) {
+        left: 55%;
+        animation-delay: 4s;
+        width: 16px;
+        height: 21px;
+      }
+      .petal:nth-child(7) {
+        left: 65%;
+        animation-delay: 10s;
+      }
+      .petal:nth-child(8) {
+        left: 75%;
+        animation-delay: 5s;
+        width: 19px;
+        height: 24px;
+      }
+      .petal:nth-child(9) {
+        left: 85%;
+        animation-delay: 7s;
+      }
+      .petal:nth-child(10) {
+        left: 95%;
+        animation-delay: 2s;
+        width: 17px;
+        height: 22px;
+      }
 
-        @keyframes petalFall {
-            0% {
-                top: -30px;
-                opacity: 0;
-                transform: translateX(0) rotate(0deg);
-            }
-            10% {
-                opacity: 0.7;
-            }
-            90% {
-                opacity: 0.5;
-            }
-            100% {
-                top: 110vh;
-                opacity: 0;
-                transform: translateX(100px) rotate(360deg);
-            }
+      @keyframes petalFall {
+        0% {
+          top: -30px;
+          opacity: 0;
+          transform: translateX(0) rotate(0deg);
         }
+        10% {
+          opacity: 0.7;
+        }
+        90% {
+          opacity: 0.5;
+        }
+        100% {
+          top: 110vh;
+          opacity: 0;
+          transform: translateX(100px) rotate(360deg);
+        }
+      }
 
-        /* ===== CONTAINER ===== */
+      /* ===== CONTAINER ===== */
+      .container {
+        width: 100%;
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 15px;
+        position: relative;
+        z-index: 10;
+      }
+
+      /* ===== PIN PAGE ===== */
+      .pin-page {
+        text-align: center;
+        animation: fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        width: 100%;
+        max-width: 450px;
+        padding: 30px 20px;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        border-radius: 25px;
+        box-shadow:
+          0 10px 40px var(--soft-shadow),
+          0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+      }
+
+      .pin-page.hidden {
+        display: none;
+      }
+
+      .pin-title {
+        font-family: "Italiana", serif;
+        font-size: clamp(2rem, 9vw, 4.5rem);
+        color: var(--deep-rose);
+        margin-bottom: 12px;
+        font-weight: 400;
+        letter-spacing: 2px;
+        text-shadow: 0 2px 10px rgba(201, 24, 74, 0.2);
+        animation: titleReveal 1s ease-out 0.3s both;
+        line-height: 1.1;
+      }
+
+      @keyframes titleReveal {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+          letter-spacing: 10px;
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+          letter-spacing: 2px;
+        }
+      }
+
+      .pin-subtitle {
+        font-size: clamp(0.9rem, 3.5vw, 1.3rem);
+        color: var(--deep-rose);
+        margin-bottom: 30px;
+        font-weight: 300;
+        letter-spacing: 2px;
+        opacity: 0.8;
+        animation: fadeInUp 1s ease-out 0.6s both;
+      }
+
+      .pin-input-container {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        margin-bottom: 30px;
+        animation: fadeInUp 1s ease-out 0.9s both;
+        flex-wrap: nowrap;
+      }
+
+      .pin-input {
+        width: clamp(50px, 16vw, 80px);
+        height: clamp(50px, 16vw, 80px);
+        font-size: clamp(1.3rem, 5vw, 2.5rem);
+        text-align: center;
+        border: 2px solid transparent;
+        border-radius: 15px;
+        background:
+          linear-gradient(white, white) padding-box,
+          linear-gradient(135deg, var(--rose-bloom), var(--gold)) border-box;
+        color: var(--deep-rose);
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        font-family: "Cormorant Garamond", serif;
+        box-shadow: 0 5px 20px rgba(201, 24, 74, 0.1);
+        touch-action: manipulation;
+      }
+
+      .pin-input:focus {
+        outline: none;
+        transform: scale(1.1) translateY(-5px);
+        box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+      }
+
+      .pin-input::placeholder {
+        color: var(--blush);
+        opacity: 0.5;
+      }
+
+      .pin-button {
+        background: linear-gradient(
+          135deg,
+          var(--rose-bloom) 0%,
+          var(--deep-rose) 100%
+        );
+        color: white;
+        border: none;
+        padding: 15px 40px;
+        font-size: clamp(1rem, 4vw, 1.3rem);
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 8px 25px rgba(201, 24, 74, 0.3);
+        font-family: "Cormorant Garamond", serif;
+        letter-spacing: 1px;
+        animation: fadeInUp 1s ease-out 1.2s both;
+        position: relative;
+        overflow: hidden;
+        touch-action: manipulation;
+        width: 100%;
+        max-width: 280px;
+      }
+
+      .pin-button::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.6s,
+          height 0.6s;
+      }
+
+      .pin-button:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .pin-button:active {
+        transform: scale(0.95);
+      }
+
+      .error-message {
+        color: var(--deep-rose);
+        font-size: clamp(0.95rem, 3.5vw, 1.1rem);
+        margin-top: 25px;
+        font-weight: 400;
+        min-height: 28px;
+        font-style: italic;
+      }
+
+      .error-message.shake {
+        animation: gentleShake 0.5s ease-in-out;
+      }
+
+      @keyframes gentleShake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-8px);
+        }
+        75% {
+          transform: translateX(8px);
+        }
+      }
+
+      /* ===== LOVE PAGE ===== */
+      .love-page {
+        text-align: center;
+        animation: fadeInScale 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        width: 100%;
+        max-width: 950px;
+        padding: 40px 30px;
+      }
+
+      .love-page.hidden {
+        display: none;
+      }
+
+      @keyframes fadeInScale {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .love-header {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        border-radius: 25px;
+        padding: 35px 25px 30px;
+        margin-bottom: 35px;
+        box-shadow:
+          0 15px 50px var(--soft-shadow),
+          0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+        animation: slideDown 1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .love-main-text {
+        font-family: "Italiana", serif;
+        font-size: clamp(2rem, 10vw, 5rem);
+        background: linear-gradient(
+          135deg,
+          var(--rose-bloom) 0%,
+          var(--deep-rose) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 18px;
+        font-weight: 400;
+        letter-spacing: 2px;
+        line-height: 1.2;
+        animation: gradientFlow 3s ease infinite;
+        background-size: 200% 200%;
+      }
+
+      @keyframes gradientFlow {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      .love-name {
+        font-size: clamp(1.5rem, 6vw, 3rem);
+        color: var(--deep-rose);
+        margin-bottom: 25px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        position: relative;
+        display: inline-block;
+      }
+
+      .love-name::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60%;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--rose-bloom),
+          transparent
+        );
+      }
+
+      .love-message {
+        font-size: clamp(1rem, 3.8vw, 1.4rem);
+        color: var(--midnight);
+        line-height: 1.8;
+        margin-bottom: 28px;
+        font-weight: 400;
+        max-width: 650px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 15px;
+        opacity: 0.9;
+        font-family: "Crimson Text", serif;
+      }
+
+      .kiss-button {
+        background: linear-gradient(
+          135deg,
+          var(--rose-bloom) 0%,
+          var(--deep-rose) 100%
+        );
+        color: white;
+        border: none;
+        padding: 15px 45px;
+        font-size: clamp(1rem, 4vw, 1.3rem);
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 10px 30px rgba(201, 24, 74, 0.3);
+        font-family: "Cormorant Garamond", serif;
+        letter-spacing: 1px;
+        position: relative;
+        overflow: hidden;
+        touch-action: manipulation;
+        width: 100%;
+        max-width: 280px;
+      }
+
+      .kiss-button::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.6s,
+          height 0.6s;
+      }
+
+      .kiss-button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(255, 107, 157, 0.4);
+      }
+
+      .kiss-button:hover::before {
+        width: 400px;
+        height: 400px;
+      }
+
+      .kiss-button:active {
+        transform: scale(0.95);
+      }
+
+      /* ===== GALLERY ===== */
+      .gallery-section {
+        margin-top: 35px;
+        animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both;
+        padding: 0 5px;
+      }
+
+      .gallery-title {
+        font-family: "Italiana", serif;
+        font-size: clamp(1.6rem, 5.5vw, 2.8rem);
+        color: var(--deep-rose);
+        margin-bottom: 25px;
+        font-weight: 400;
+        letter-spacing: 2px;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        margin-bottom: 35px;
+      }
+
+      @media (min-width: 500px) {
+        .gallery-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 15px;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .gallery-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+        }
+      }
+
+      .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        aspect-ratio: 1;
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 30px var(--soft-shadow);
+        touch-action: manipulation;
+      }
+
+      .gallery-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 107, 157, 0.2),
+          rgba(201, 24, 74, 0.2)
+        );
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: 1;
+      }
+
+      .gallery-item:hover::before {
+        opacity: 1;
+      }
+
+      .gallery-item:hover {
+        transform: scale(1.05) translateY(-8px);
+        box-shadow: 0 20px 50px rgba(255, 107, 157, 0.3);
+      }
+
+      .gallery-item:active {
+        transform: scale(0.95);
+        transition: all 0.1s ease;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.1);
+      }
+
+      /* ===== SPARKLES ===== */
+      .sparkle-particle {
+        position: absolute;
+        font-size: clamp(1.2rem, 4vw, 2rem);
+        animation: sparkleFloat 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        pointer-events: none;
+        z-index: 1000;
+      }
+
+      @keyframes sparkleFloat {
+        0% {
+          opacity: 1;
+          transform: translate(0, 0) scale(1) rotate(0deg);
+        }
+        100% {
+          opacity: 0;
+          transform: translate(var(--tx), var(--ty)) scale(0.3) rotate(360deg);
+        }
+      }
+
+      /* ===== MODAL ===== */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(45, 27, 46, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 2000;
+        align-items: center;
+        justify-content: center;
+        animation: fadeIn 0.4s ease;
+        padding: 15px;
+      }
+
+      .modal.active {
+        display: flex;
+      }
+
+      .modal-content {
+        position: relative;
+        max-width: 95vw;
+        max-height: 95vh;
+        animation: modalZoom 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      @keyframes modalZoom {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .modal-content img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      }
+
+      .modal-close {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        background: rgba(255, 255, 255, 0.95);
+        border: none;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        font-size: 1.4rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        z-index: 2001;
+        color: var(--deep-rose);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        touch-action: manipulation;
+      }
+
+      .modal-close:hover {
+        transform: rotate(90deg) scale(1.1);
+        background: white;
+      }
+
+      .modal-close:active {
+        transform: scale(0.9);
+      }
+
+      /* ===== MUSIC TOGGLE ===== */
+      .music-toggle {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: linear-gradient(
+          135deg,
+          var(--rose-bloom),
+          var(--deep-rose)
+        );
+        color: white;
+        border: none;
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        font-size: 1.3rem;
+        cursor: pointer;
+        box-shadow: 0 8px 25px rgba(201, 24, 74, 0.4);
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        z-index: 1000;
+        touch-action: manipulation;
+      }
+
+      .music-toggle:hover {
+        transform: scale(1.15) rotate(15deg);
+        box-shadow: 0 12px 35px rgba(255, 107, 157, 0.5);
+      }
+
+      .music-toggle:active {
+        transform: scale(0.95);
+      }
+
+      /* ===== ANIMATIONS ===== */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 600px) {
         .container {
-            width: 100%;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 30px 20px;
-            position: relative;
-            z-index: 10;
+          padding: 15px 12px;
         }
 
-        /* ===== PIN PAGE ===== */
         .pin-page {
-            text-align: center;
-            animation: fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-            width: 100%;
-            max-width: 500px;
-            padding: 40px 30px;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(20px);
-            border-radius: 30px;
-            box-shadow: 
-                0 10px 40px var(--soft-shadow),
-                0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+          padding: 25px 18px;
+          border-radius: 20px;
         }
 
-        .pin-page.hidden {
-            display: none;
-        }
-
-        .pin-title {
-            font-family: 'Italiana', serif;
-            font-size: clamp(2.5rem, 10vw, 4.5rem);
-            color: var(--deep-rose);
-            margin-bottom: 15px;
-            font-weight: 400;
-            letter-spacing: 2px;
-            text-shadow: 0 2px 10px rgba(201, 24, 74, 0.2);
-            animation: titleReveal 1s ease-out 0.3s both;
-        }
-
-        @keyframes titleReveal {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-                letter-spacing: 10px;
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-                letter-spacing: 2px;
-            }
-        }
-
-        .pin-subtitle {
-            font-size: clamp(1rem, 4vw, 1.3rem);
-            color: var(--deep-rose);
-            margin-bottom: 40px;
-            font-weight: 300;
-            letter-spacing: 3px;
-            opacity: 0.8;
-            animation: fadeInUp 1s ease-out 0.6s both;
-        }
-
-        .pin-input-container {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-bottom: 35px;
-            animation: fadeInUp 1s ease-out 0.9s both;
-        }
-
-        .pin-input {
-            width: clamp(55px, 18vw, 80px);
-            height: clamp(55px, 18vw, 80px);
-            font-size: clamp(1.5rem, 6vw, 2.5rem);
-            text-align: center;
-            border: 2px solid transparent;
-            border-radius: 18px;
-            background: linear-gradient(white, white) padding-box,
-                        linear-gradient(135deg, var(--rose-bloom), var(--gold)) border-box;
-            color: var(--deep-rose);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            font-family: 'Cormorant Garamond', serif;
-            box-shadow: 0 5px 20px rgba(201, 24, 74, 0.1);
-        }
-
-        .pin-input:focus {
-            outline: none;
-            transform: scale(1.1) translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
-        }
-
-        .pin-input::placeholder {
-            color: var(--blush);
-            opacity: 0.5;
-        }
-
-        .pin-button {
-            background: linear-gradient(135deg, var(--rose-bloom) 0%, var(--deep-rose) 100%);
-            color: white;
-            border: none;
-            padding: 18px 45px;
-            font-size: clamp(1.1rem, 4vw, 1.3rem);
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 8px 25px rgba(201, 24, 74, 0.3);
-            font-family: 'Cormorant Garamond', serif;
-            letter-spacing: 1px;
-            animation: fadeInUp 1s ease-out 1.2s both;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pin-button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .pin-button:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .pin-button:active {
-            transform: scale(0.95);
-        }
-
-        .error-message {
-            color: var(--deep-rose);
-            font-size: clamp(0.95rem, 3.5vw, 1.1rem);
-            margin-top: 25px;
-            font-weight: 400;
-            min-height: 28px;
-            font-style: italic;
-        }
-
-        .error-message.shake {
-            animation: gentleShake 0.5s ease-in-out;
-        }
-
-        @keyframes gentleShake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-8px); }
-            75% { transform: translateX(8px); }
-        }
-
-        /* ===== LOVE PAGE ===== */
         .love-page {
-            text-align: center;
-            animation: fadeInScale 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-            width: 100%;
-            max-width: 950px;
-            padding: 40px 30px;
-        }
-
-        .love-page.hidden {
-            display: none;
-        }
-
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+          padding: 20px 15px;
         }
 
         .love-header {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(20px);
-            border-radius: 30px;
-            padding: 50px 30px 40px;
-            margin-bottom: 40px;
-            box-shadow: 
-                0 15px 50px var(--soft-shadow),
-                0 0 0 1px rgba(255, 255, 255, 0.5) inset;
-            animation: slideDown 1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+          padding: 28px 20px 25px;
+          border-radius: 20px;
         }
 
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .pin-input-container {
+          gap: 6px;
         }
 
-        .love-main-text {
-            font-family: 'Italiana', serif;
-            font-size: clamp(2.5rem, 11vw, 5rem);
-            background: linear-gradient(135deg, var(--rose-bloom) 0%, var(--deep-rose) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-            font-weight: 400;
-            letter-spacing: 3px;
-            line-height: 1.2;
-            animation: gradientFlow 3s ease infinite;
-        }
-
-        @keyframes gradientFlow {
-            0%, 100% { 
-                background-position: 0% 50%;
-            }
-            50% { 
-                background-position: 100% 50%;
-            }
-        }
-
-        .love-name {
-            font-size: clamp(1.8rem, 7vw, 3rem);
-            color: var(--deep-rose);
-            margin-bottom: 30px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .love-name::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--rose-bloom), transparent);
-        }
-
-        .love-message {
-            font-size: clamp(1.1rem, 4vw, 1.4rem);
-            color: var(--midnight);
-            line-height: 2;
-            margin-bottom: 35px;
-            font-weight: 400;
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 0 20px;
-            opacity: 0.9;
-            font-family: 'Crimson Text', serif;
-        }
-
-        .kiss-button {
-            background: linear-gradient(135deg, var(--rose-bloom) 0%, var(--deep-rose) 100%);
-            color: white;
-            border: none;
-            padding: 18px 50px;
-            font-size: clamp(1.1rem, 4vw, 1.3rem);
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 10px 30px rgba(201, 24, 74, 0.3);
-            font-family: 'Cormorant Garamond', serif;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .kiss-button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .kiss-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.4);
-        }
-
-        .kiss-button:hover::before {
-            width: 400px;
-            height: 400px;
-        }
-
-        .kiss-button:active {
-            transform: scale(0.95);
-        }
-
-        /* ===== GALLERY ===== */
         .gallery-section {
-            margin-top: 50px;
-            animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both;
-        }
-
-        .gallery-title {
-            font-family: 'Italiana', serif;
-            font-size: clamp(2rem, 6vw, 2.8rem);
-            color: var(--deep-rose);
-            margin-bottom: 35px;
-            font-weight: 400;
-            letter-spacing: 2px;
+          margin-top: 30px;
+          padding: 0 3px;
         }
 
         .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
+          gap: 10px;
         }
 
-        @media (max-width: 600px) {
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-            }
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            aspect-ratio: 1;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 30px var(--soft-shadow);
-        }
-
-        .gallery-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(255, 107, 157, 0.2), rgba(201, 24, 74, 0.2));
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: 1;
-        }
-
-        .gallery-item:hover::before {
-            opacity: 1;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05) translateY(-8px);
-            box-shadow: 0 20px 50px rgba(255, 107, 157, 0.3);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        /* ===== SPARKLES ===== */
-        .sparkle-particle {
-            position: absolute;
-            font-size: clamp(1.2rem, 4vw, 2rem);
-            animation: sparkleFloat 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-            pointer-events: none;
-            z-index: 1000;
-        }
-
-        @keyframes sparkleFloat {
-            0% {
-                opacity: 1;
-                transform: translate(0, 0) scale(1) rotate(0deg);
-            }
-            100% {
-                opacity: 0;
-                transform: translate(var(--tx), var(--ty)) scale(0.3) rotate(360deg);
-            }
-        }
-
-        /* ===== MODAL ===== */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(45, 27, 46, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 0.4s ease;
-            padding: 20px;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            position: relative;
-            max-width: 95vw;
-            max-height: 95vh;
-            animation: modalZoom 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        @keyframes modalZoom {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .modal-content img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        .music-toggle {
+          width: 50px;
+          height: 50px;
+          font-size: 1.2rem;
+          bottom: 15px;
+          right: 15px;
         }
 
         .modal-close {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            z-index: 2001;
-            color: var(--deep-rose);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+          top: 12px;
+          right: 12px;
+          width: 42px;
+          height: 42px;
+          font-size: 1.3rem;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .pin-title {
+          letter-spacing: 1px;
         }
 
-        .modal-close:hover {
-            transform: rotate(90deg) scale(1.1);
-            background: white;
+        .pin-subtitle {
+          letter-spacing: 1px;
         }
 
-        .modal-close:active {
-            transform: scale(0.9);
+        .love-main-text {
+          letter-spacing: 1px;
         }
 
-        /* ===== MUSIC TOGGLE ===== */
-        .music-toggle {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(135deg, var(--rose-bloom), var(--deep-rose));
-            color: white;
-            border: none;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 8px 25px rgba(201, 24, 74, 0.4);
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            z-index: 1000;
+        .love-name {
+          letter-spacing: 1px;
         }
 
-        .music-toggle:hover {
-            transform: scale(1.15) rotate(15deg);
-            box-shadow: 0 12px 35px rgba(255, 107, 157, 0.5);
+        .gallery-grid {
+          gap: 8px;
+        }
+      }
+
+      @media (max-height: 600px) and (orientation: landscape) {
+        .container {
+          padding: 10px;
+          min-height: auto;
         }
 
-        .music-toggle:active {
-            transform: scale(0.95);
+        .pin-page {
+          padding: 20px 18px;
+          max-width: 100%;
         }
 
-        /* ===== ANIMATIONS ===== */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .love-page {
+          padding: 15px 12px;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .love-header {
+          padding: 20px 18px 18px;
         }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 600px) {
-            .container {
-                padding: 20px 15px;
-            }
-
-            .pin-page,
-            .love-header {
-                padding: 35px 25px;
-            }
-
-            .pin-input-container {
-                gap: 10px;
-            }
-
-            .gallery-section {
-                margin-top: 35px;
-            }
-
-            .music-toggle {
-                width: 55px;
-                height: 55px;
-                bottom: 20px;
-                right: 20px;
-            }
-
-            .modal-close {
-                top: 15px;
-                right: 15px;
-                width: 45px;
-                height: 45px;
-            }
+        .pin-title,
+        .love-main-text {
+          margin-bottom: 8px;
         }
 
-        @media (max-height: 600px) and (orientation: landscape) {
-            .container {
-                padding: 15px;
-            }
-
-            .pin-page,
-            .love-header {
-                padding: 25px 20px;
-            }
-
-            .love-message {
-                line-height: 1.6;
-                margin-bottom: 20px;
-            }
-
-            .gallery-section {
-                margin-top: 25px;
-            }
-
-            .rose-petals {
-                display: none;
-            }
+        .pin-subtitle {
+          margin-bottom: 15px;
         }
 
-        /* Prevent text selection on interactive elements */
-        button, .gallery-item {
-            -webkit-user-select: none;
-            user-select: none;
+        .pin-input-container {
+          margin-bottom: 20px;
         }
+
+        .love-message {
+          margin-bottom: 15px;
+          line-height: 1.6;
+        }
+
+        .gallery-section {
+          margin-top: 20px;
+        }
+
+        .rose-petals {
+          display: none;
+        }
+
+        .bg-gradient {
+          animation: none;
+        }
+
+        .gallery-grid {
+          grid-template-columns: repeat(4, 1fr);
+          gap: 10px;
+        }
+      }
+
+      @media (max-height: 500px) and (orientation: landscape) {
+        .pin-page {
+          padding: 15px;
+        }
+
+        .love-header {
+          padding: 15px;
+        }
+
+        .pin-title {
+          font-size: clamp(1.5rem, 6vw, 2.5rem);
+        }
+
+        .love-main-text {
+          font-size: clamp(1.8rem, 7vw, 3.5rem);
+        }
+      }
+
+      /* Prevent text selection on interactive elements */
+      button,
+      .gallery-item {
+        -webkit-user-select: none;
+        user-select: none;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Animated Background -->
     <div class="background-art">
-        <div class="bg-gradient"></div>
-        <div class="rose-petals">
-            <div class="petal"></div>
-            <div class="petal"></div>
-            <div class="petal"></div>
-            <div class="petal"></div>
-            <div class="petal"></div>
-            <div class="petal"></div>
-            <div class="petal"></div>
-            <div class="petal"></div>
-            <div class="petal"></div>
-            <div class="petal"></div>
-        </div>
+      <div class="bg-gradient"></div>
+      <div class="rose-petals">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+      </div>
     </div>
 
     <!-- Main Container -->
     <div class="container">
-        <!-- PIN PAGE -->
-        <div class="pin-page" id="pinPage">
-            <h1 class="pin-title">✦ Unlock ✦</h1>
-            <p class="pin-subtitle">OUR ANNIVERSARY</p>
-            
-            <div class="pin-input-container">
-                <input type="tel" class="pin-input" id="pin1" maxlength="1" placeholder="·" inputmode="numeric" pattern="[0-9]*">
-                <input type="tel" class="pin-input" id="pin2" maxlength="1" placeholder="·" inputmode="numeric" pattern="[0-9]*">
-                <input type="tel" class="pin-input" id="pin3" maxlength="1" placeholder="·" inputmode="numeric" pattern="[0-9]*">
-                <input type="tel" class="pin-input" id="pin4" maxlength="1" placeholder="·" inputmode="numeric" pattern="[0-9]*">
-            </div>
+      <!-- PIN PAGE -->
+      <div class="pin-page" id="pinPage">
+        <h1 class="pin-title">✦ Unlock ✦</h1>
+        <p class="pin-subtitle">OUR ANNIVERSARY</p>
 
-            <button class="pin-button" id="pinButton">
-                <span style="position: relative; z-index: 1;">Enter ❤</span>
-            </button>
-            <div class="error-message" id="errorMessage"></div>
+        <div class="pin-input-container">
+          <input
+            type="tel"
+            class="pin-input"
+            id="pin1"
+            maxlength="1"
+            placeholder="·"
+            inputmode="numeric"
+            pattern="[0-9]*"
+          />
+          <input
+            type="tel"
+            class="pin-input"
+            id="pin2"
+            maxlength="1"
+            placeholder="·"
+            inputmode="numeric"
+            pattern="[0-9]*"
+          />
+          <input
+            type="tel"
+            class="pin-input"
+            id="pin3"
+            maxlength="1"
+            placeholder="·"
+            inputmode="numeric"
+            pattern="[0-9]*"
+          />
+          <input
+            type="tel"
+            class="pin-input"
+            id="pin4"
+            maxlength="1"
+            placeholder="·"
+            inputmode="numeric"
+            pattern="[0-9]*"
+          />
         </div>
 
-        <!-- LOVE PAGE -->
-        <div class="love-page hidden" id="lovePage">
-            <div class="love-header">
-                <h1 class="love-main-text">Happy Valentine's Day</h1>
-                <h2 class="love-name" id="loverName">My Beloved</h2>
-                
-                <p class="love-message" id="loveMessage">
-                    On this special day, I want to tell you that<br>
-                    you are the most beautiful thing in my life.<br>
-                    Thank you for always being by my side<br>
-                    and making every day special.<br>
-                    I love you so much 💕
-                </p>
+        <button class="pin-button" id="pinButton">
+          <span style="position: relative; z-index: 1">Enter ❤</span>
+        </button>
+        <div class="error-message" id="errorMessage"></div>
+      </div>
 
-                <button class="kiss-button" id="kissButton">
-                    <span style="position: relative; z-index: 1;">Receive Kiss 💋</span>
-                </button>
-            </div>
+      <!-- LOVE PAGE -->
+      <div class="love-page hidden" id="lovePage">
+        <div class="love-header">
+          <h1 class="love-main-text">Happy Valentine's Day</h1>
+          <h2 class="love-name" id="loverName">My Beloved</h2>
 
-            <!-- GALLERY -->
-            <div class="gallery-section">
-                <h3 class="gallery-title">✦ Our Memories ✦</h3>
-                <div class="gallery-grid" id="galleryGrid"></div>
-            </div>
+          <p class="love-message" id="loveMessage">
+            On this special day, I want to tell you that<br />
+            you are the most beautiful thing in my life.<br />
+            Thank you for always being by my side<br />
+            and making every day special.<br />
+            I love you so much 💕
+          </p>
+
+          <button class="kiss-button" id="kissButton">
+            <span style="position: relative; z-index: 1">Receive Kiss 💋</span>
+          </button>
         </div>
+
+        <!-- GALLERY -->
+        <div class="gallery-section">
+          <h3 class="gallery-title">✦ Our Memories ✦</h3>
+          <div class="gallery-grid" id="galleryGrid"></div>
+        </div>
+      </div>
     </div>
 
     <!-- Image Modal -->
     <div class="modal" id="imageModal">
-        <button class="modal-close" id="modalClose">✕</button>
-        <div class="modal-content">
-            <img id="modalImage" src="" alt="Full size image">
-        </div>
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-content">
+        <img id="modalImage" src="" alt="Full size image" />
+      </div>
     </div>
 
     <!-- Music Toggle -->
-    <button class="music-toggle" id="musicToggle" title="Toggle Music">🎵</button>
+    <button class="music-toggle" id="musicToggle" title="Toggle Music">
+      🎵
+    </button>
 
     <script>
-        // ===== CONFIG =====
-        const CONFIG = {
-            correctPin: "1402",
-            loverName: "My Beloved",
-            loveMessage: `On this special day, I want to tell you that<br>
+      // ===== CONFIG =====
+      const CONFIG = {
+        correctPin: "1402",
+        loverName: "My Beloved",
+        loveMessage: `On this special day, I want to tell you that<br>
                 you are the most beautiful thing in my life.<br>
                 Thank you for always being by my side<br>
                 and making every day special.<br>
                 I love you so much 💕`,
-            galleryImages: [
-                "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=600&h=600&fit=crop",
-                "https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?w=600&h=600&fit=crop",
-                "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=600&h=600&fit=crop",
-                "https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?w=600&h=600&fit=crop",
-                "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=600&h=600&fit=crop",
-                "https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?w=600&h=600&fit=crop"
-            ]
-        };
+        galleryImages: [
+          "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=600&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?w=600&h=600&fit=crop",
+        ],
+      };
 
-        // ===== PIN LOGIC =====
-        const pinInputs = document.querySelectorAll('.pin-input');
-        const pinButton = document.getElementById('pinButton');
-        const errorMessage = document.getElementById('errorMessage');
-        const pinPage = document.getElementById('pinPage');
-        const lovePage = document.getElementById('lovePage');
+      // ===== PIN LOGIC =====
+      const pinInputs = document.querySelectorAll(".pin-input");
+      const pinButton = document.getElementById("pinButton");
+      const errorMessage = document.getElementById("errorMessage");
+      const pinPage = document.getElementById("pinPage");
+      const lovePage = document.getElementById("lovePage");
 
-        pinInputs.forEach(input => {
-            input.addEventListener('focus', function() {
-                this.style.fontSize = '16px';
-            });
+      pinInputs.forEach((input) => {
+        input.addEventListener("focus", function () {
+          this.style.fontSize = "16px";
+        });
+      });
+
+      pinInputs.forEach((input, index) => {
+        input.addEventListener("input", (e) => {
+          e.target.value = e.target.value.replace(/[^0-9]/g, "");
+          if (e.target.value && index < pinInputs.length - 1) {
+            pinInputs[index + 1].focus();
+          }
         });
 
-        pinInputs.forEach((input, index) => {
-            input.addEventListener('input', (e) => {
-                e.target.value = e.target.value.replace(/[^0-9]/g, '');
-                if (e.target.value && index < pinInputs.length - 1) {
-                    pinInputs[index + 1].focus();
-                }
-            });
-
-            input.addEventListener('keydown', (e) => {
-                if (e.key === 'Backspace' && !input.value && index > 0) {
-                    pinInputs[index - 1].focus();
-                }
-            });
-
-            input.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    checkPin();
-                }
-            });
+        input.addEventListener("keydown", (e) => {
+          if (e.key === "Backspace" && !input.value && index > 0) {
+            pinInputs[index - 1].focus();
+          }
         });
 
-        pinButton.addEventListener('click', checkPin);
-
-        function checkPin() {
-            const pin = Array.from(pinInputs).map(input => input.value).join('');
-            
-            if (pin.length !== 4) {
-                showError('Please enter 4 digits');
-                return;
-            }
-
-            if (pin === CONFIG.correctPin) {
-                errorMessage.textContent = '';
-                pinPage.classList.add('hidden');
-                lovePage.classList.remove('hidden');
-                initializeGallery();
-                createSparkles();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
-                showError('Try again, my love 💕');
-                pinInputs.forEach(input => input.value = '');
-                pinInputs[0].focus();
-            }
-        }
-
-        function showError(message) {
-            errorMessage.textContent = message;
-            errorMessage.classList.remove('shake');
-            setTimeout(() => errorMessage.classList.add('shake'), 10);
-        }
-
-        // ===== LOVE PAGE =====
-        document.getElementById('loverName').textContent = CONFIG.loverName;
-        document.getElementById('loveMessage').innerHTML = CONFIG.loveMessage;
-        document.getElementById('kissButton').addEventListener('click', createSparkles);
-
-        function createSparkles() {
-            const sparkles = ['✨', '💫', '⭐', '🌟', '💖', '💕', '💗', '💝', '💘', '🌸'];
-            const count = window.innerWidth < 480 ? 20 : 30;
-            
-            for (let i = 0; i < count; i++) {
-                const sparkle = document.createElement('div');
-                sparkle.className = 'sparkle-particle';
-                sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
-                
-                const x = Math.random() * window.innerWidth;
-                const y = Math.random() * window.innerHeight;
-                sparkle.style.left = x + 'px';
-                sparkle.style.top = y + 'px';
-                
-                const tx = (Math.random() - 0.5) * 200;
-                const ty = (Math.random() - 0.5) * 200;
-                sparkle.style.setProperty('--tx', tx + 'px');
-                sparkle.style.setProperty('--ty', ty + 'px');
-                
-                document.body.appendChild(sparkle);
-                setTimeout(() => sparkle.remove(), 1500);
-            }
-        }
-
-        // ===== GALLERY =====
-        function initializeGallery() {
-            const galleryGrid = document.getElementById('galleryGrid');
-            galleryGrid.innerHTML = '';
-
-            CONFIG.galleryImages.forEach((imageUrl, index) => {
-                const galleryItem = document.createElement('div');
-                galleryItem.className = 'gallery-item';
-                galleryItem.style.animationDelay = `${index * 0.1}s`;
-                
-                const img = document.createElement('img');
-                img.src = imageUrl;
-                img.alt = `Memory ${index + 1}`;
-                img.loading = 'lazy';
-                
-                galleryItem.appendChild(img);
-                galleryItem.addEventListener('click', () => openModal(imageUrl));
-                
-                galleryGrid.appendChild(galleryItem);
-            });
-        }
-
-        // ===== MODAL =====
-        const modal = document.getElementById('imageModal');
-        const modalImage = document.getElementById('modalImage');
-        const modalClose = document.getElementById('modalClose');
-
-        function openModal(imageSrc) {
-            modalImage.src = imageSrc;
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            modal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        modalClose.addEventListener('click', (e) => {
-            e.stopPropagation();
-            closeModal();
+        input.addEventListener("keypress", (e) => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            checkPin();
+          }
         });
+      });
 
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
+      pinButton.addEventListener("click", checkPin);
+
+      function checkPin() {
+        const pin = Array.from(pinInputs)
+          .map((input) => input.value)
+          .join("");
+
+        if (pin.length !== 4) {
+          showError("Please enter 4 digits");
+          return;
+        }
+
+        if (pin === CONFIG.correctPin) {
+          errorMessage.textContent = "";
+          pinPage.classList.add("hidden");
+          lovePage.classList.remove("hidden");
+          initializeGallery();
+          createSparkles();
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+          showError("Try again, my love 💕");
+          pinInputs.forEach((input) => (input.value = ""));
+          pinInputs[0].focus();
+        }
+      }
+
+      function showError(message) {
+        errorMessage.textContent = message;
+        errorMessage.classList.remove("shake");
+        setTimeout(() => errorMessage.classList.add("shake"), 10);
+      }
+
+      // ===== LOVE PAGE =====
+      document.getElementById("loverName").textContent = CONFIG.loverName;
+      document.getElementById("loveMessage").innerHTML = CONFIG.loveMessage;
+      document
+        .getElementById("kissButton")
+        .addEventListener("click", createSparkles);
+
+      function createSparkles() {
+        const sparkles = [
+          "✨",
+          "💫",
+          "⭐",
+          "🌟",
+          "💖",
+          "💕",
+          "💗",
+          "💝",
+          "💘",
+          "🌸",
+        ];
+        const count = window.innerWidth < 480 ? 20 : 30;
+
+        for (let i = 0; i < count; i++) {
+          const sparkle = document.createElement("div");
+          sparkle.className = "sparkle-particle";
+          sparkle.textContent =
+            sparkles[Math.floor(Math.random() * sparkles.length)];
+
+          const x = Math.random() * window.innerWidth;
+          const y = Math.random() * window.innerHeight;
+          sparkle.style.left = x + "px";
+          sparkle.style.top = y + "px";
+
+          const tx = (Math.random() - 0.5) * 200;
+          const ty = (Math.random() - 0.5) * 200;
+          sparkle.style.setProperty("--tx", tx + "px");
+          sparkle.style.setProperty("--ty", ty + "px");
+
+          document.body.appendChild(sparkle);
+          setTimeout(() => sparkle.remove(), 1500);
+        }
+      }
+
+      // ===== GALLERY =====
+      function initializeGallery() {
+        const galleryGrid = document.getElementById("galleryGrid");
+        galleryGrid.innerHTML = "";
+
+        CONFIG.galleryImages.forEach((imageUrl, index) => {
+          const galleryItem = document.createElement("div");
+          galleryItem.className = "gallery-item";
+          galleryItem.style.animationDelay = `${index * 0.1}s`;
+
+          const img = document.createElement("img");
+          img.src = imageUrl;
+          img.alt = `Memory ${index + 1}`;
+          img.loading = "lazy";
+
+          galleryItem.appendChild(img);
+          galleryItem.addEventListener("click", () => openModal(imageUrl));
+
+          galleryGrid.appendChild(galleryItem);
         });
+      }
 
-        // ===== MUSIC =====
-        const musicToggle = document.getElementById('musicToggle');
-        let isPlaying = false;
+      // ===== MODAL =====
+      const modal = document.getElementById("imageModal");
+      const modalImage = document.getElementById("modalImage");
+      const modalClose = document.getElementById("modalClose");
 
-        musicToggle.addEventListener('click', () => {
-            isPlaying = !isPlaying;
-            musicToggle.textContent = isPlaying ? '🎶' : '🎵';
-        });
+      function openModal(imageSrc) {
+        modalImage.src = imageSrc;
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
 
-        // ===== INIT =====
-        window.addEventListener('load', () => {
-            pinInputs[0].focus();
-        });
+      function closeModal() {
+        modal.classList.remove("active");
+        document.body.style.overflow = "";
+      }
 
-        document.body.addEventListener('touchmove', (e) => {
-            if (e.touches.length > 1) e.preventDefault();
-        }, { passive: false });
+      modalClose.addEventListener("click", (e) => {
+        e.stopPropagation();
+        closeModal();
+      });
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      // ===== MUSIC =====
+      const musicToggle = document.getElementById("musicToggle");
+      let isPlaying = false;
+
+      musicToggle.addEventListener("click", () => {
+        isPlaying = !isPlaying;
+        musicToggle.textContent = isPlaying ? "🎶" : "🎵";
+      });
+
+      // ===== INIT =====
+      window.addEventListener("load", () => {
+        pinInputs[0].focus();
+      });
+
+      document.body.addEventListener(
+        "touchmove",
+        (e) => {
+          if (e.touches.length > 1) e.preventDefault();
+        },
+        { passive: false },
+      );
     </script>
-</body>
+  </body>
 </html>
